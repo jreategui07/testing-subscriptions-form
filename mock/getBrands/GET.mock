@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: text/plain; charset=utf-8
+Connection: keep-alive
+
+[
+   { "code": "b1", "description": "BMW" },
+   { "code": "b2", "description": "Porsche" },
+   { "code": "b3", "description": "Ferrari" }
+]

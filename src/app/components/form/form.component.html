@@ -1,33 +1,33 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="anyForm">
     <label>Color:</label>
     <select formControlName="color">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+        <option *ngFor="let item of colorsData" [value]="item.code">{{ item.description }}</option>
     </select>
     <br><br>
 
     <label>Brand:</label>
     <select formControlName="brand">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+            <option *ngFor="let item of brandsData" [value]="item.code">{{ item.description }}</option>
     </select>
     <br><br>
 
     <label>Size:</label>
     <select formControlName="size">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+            <option *ngFor="let item of sizesData" [value]="item.code">{{ item.description }}</option>
     </select>
     <br><br>
 
     <label>Fruit:</label>
     <select formControlName="fruit">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+            <option *ngFor="let item of fruitsData" [value]="item.code">{{ item.description }}</option>
     </select>
     <br><br>
+
+    <button type="submit">Ok</button>
 </form>
+
+<br><br>
+
+<p>
+    {{ anyForm.value | json }}
+</p>

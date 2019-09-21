@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: text/plain; charset=utf-8
+Connection: keep-alive
+
+[
+   { "code": "s1", "description": "S" },
+   { "code": "s2", "description": "M" },
+   { "code": "s3", "description": "L" }
+]
