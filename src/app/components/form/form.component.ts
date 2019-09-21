@@ -36,6 +36,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
     this.colorSC = this.catalogueService.getColors().subscribe(
       (response: any) => {
+        console.log(response.body);
         this.colorsData = response.body;
       },
       error => 
@@ -46,6 +47,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
     this.brandSC = this.catalogueService.getSizes().subscribe(
       (response: any) => {
+        console.log(response.body);
         this.brandsData = response.body;
       },
       error => 
@@ -56,6 +58,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
     this.sizeSC = this.catalogueService.getFruits().subscribe(
       (response: any) => {
+        console.log(response.body);
         this.sizesData = response.body;
       },
       error => 
@@ -66,6 +69,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
     this.fruitSC = this.catalogueService.getColors().subscribe(
       (response: any) => {
+        console.log(response.body);
         this.fruitsData = response.body;
       },
       error => 
