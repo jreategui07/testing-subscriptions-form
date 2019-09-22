@@ -28,12 +28,3 @@ export class CatalogueService {
     return this.http.get('http://localhost:8080/getFruits', this.requestOptions).pipe(map(response => response['body']));
   }
 }
-
-  /* getFruits() {
-    return this.http.get('http://localhost:8080/getFruits', { headers: this.headers, observe: 'response' }).pipe(
-      map(response => {
-        return response.body;
-      })
-    );
-  } */
-
