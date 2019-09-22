@@ -1,25 +1,26 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="anyForm">
+
     <label>Color:</label>
     <select formControlName="color">
-        <option *ngFor="let item of colorsData" [value]="item.code">{{ item.description }}</option>
+      <option *ngFor="let item of colorSC$ | async" [value]="item?.code">{{ item?.description }}</option>
     </select>
     <br><br>
 
     <label>Brand:</label>
     <select formControlName="brand">
-            <option *ngFor="let item of brandsData" [value]="item.code">{{ item.description }}</option>
+      <option *ngFor="let item of brandSC$ | async" [value]="item?.code">{{ item?.description }}</option>
     </select>
     <br><br>
 
     <label>Size:</label>
     <select formControlName="size">
-            <option *ngFor="let item of sizesData" [value]="item.code">{{ item.description }}</option>
+      <option *ngFor="let item of this.sizeSC$ | async" [value]="item?.code">{{ item?.description }}</option>
     </select>
     <br><br>
 
     <label>Fruit:</label>
     <select formControlName="fruit">
-            <option *ngFor="let item of fruitsData" [value]="item.code">{{ item.description }}</option>
+      <option *ngFor="let item of fruitSC$ | async" [value]="item?.code">{{ item?.description }}</option>
     </select>
     <br><br>
 

@@ -6,45 +6,34 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CatalogueService {
-
-  headers: any;
-
+  
+  requestOptions: any;
+  
   constructor(public http: HttpClient) {
-    this.headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'text/plain; charset=utf-8'
     });
+    this.requestOptions = { headers: headers, observe: 'response' };
   }
-
   getColors() {
-    return this.http.get('http://localhost:8080/getColors', { headers: this.headers, observe: 'response' }).pipe(
-      map(response => {
-        return response;
-      })
-    );
+    return this.http.get('http://localhost:8080/getColors', this.requestOptions).pipe(map(response => response['body']));
   }
-
   getBrands() {
-    return this.http.get('http://localhost:8080/getBrands', { headers: this.headers, observe: 'response' }).pipe(
-      map(response => {
-        return response;
-      })
-    );
+    return this.http.get('http://localhost:8080/getBrands', this.requestOptions).pipe(map(response => response['body']));
   }
-
   getSizes() {
-    return this.http.get('http://localhost:8080/getSizes', { headers: this.headers, observe: 'response' }).pipe(
-      map(response => {
-        return response;
-      })
-    );
+    return this.http.get('http://localhost:8080/getSizes', this.requestOptions).pipe(map(response => response['body']));
   }
-
   getFruits() {
+    return this.http.get('http://localhost:8080/getFruits', this.requestOptions).pipe(map(response => response['body']));
+  }
+}
+
+  /* getFruits() {
     return this.http.get('http://localhost:8080/getFruits', { headers: this.headers, observe: 'response' }).pipe(
       map(response => {
-        return response;
+        return response.body;
       })
     );
-  }
+  } */
 
-}
