@@ -1,8 +1,10 @@
-HTTP/1.1 400 Bad Request
+HTTP/1.1 400 Ok
 Access-Control-Allow-Origin: *
 Content-Type: text/plain; charset=utf-8
 Connection: keep-alive
 
 [
-   { "error": "c1", "error_des": "any error" }
+   { "code": "c1", "description": "Red" },
+   { "code": "c2", "description": "Blue" },
+   { "code": "c3", "description": "Yellow" }
 ]

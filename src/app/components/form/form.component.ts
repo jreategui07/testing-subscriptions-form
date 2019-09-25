@@ -1,8 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { CatalogueService } from '../../services/catalogue.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
+export interface IError {
+  status: boolean,
+  error: string
+};
+
+@Pipe({
+  name: 'appflyers',
+  pure: false
+})
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -11,6 +22,7 @@ import { CatalogueService } from '../../services/catalogue.service';
 export class FormComponent implements OnInit {
 
   anyForm: FormGroup;
+  formHasError: Array<string>;
   
   colorSC$ : Observable<any>;
   brandSC$ : Observable<any>;
@@ -22,6 +34,11 @@ export class FormComponent implements OnInit {
   sizeChanged : Subscription;
   fruitChanged : Subscription;
 
+  errorFn = catchError((e: HttpErrorResponse) => {
+    this.formHasError.push(e.message);
+    return [];
+  });
+
   constructor(private fb: FormBuilder,
               private catalogueService: CatalogueService) { 
 
@@ -32,11 +49,10 @@ export class FormComponent implements OnInit {
       fruit: [''],
     });
     
-    
-    this.colorSC$ = catalogueService.getColors();
-    this.brandSC$ = catalogueService.getBrands();
-    this.sizeSC$  = catalogueService.getSizes();
-    this.fruitSC$ = catalogueService.getFruits();
+    this.colorSC$ = catalogueService.getColors().pipe(this.errorFn);
+    this.brandSC$ = catalogueService.getBrands().pipe(this.errorFn);
+    this.sizeSC$  = catalogueService.getSizes().pipe(this.errorFn);
+    this.fruitSC$ = catalogueService.getFruits().pipe(this.errorFn);
 
   }
 

@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="anyForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="anyForm" *ngIf="!formHasError">
 
     <label>Color:</label>
     <select formControlName="color">
@@ -26,6 +26,8 @@
 
     <button type="submit">Ok</button>
 </form>
+
+<div class="error" *ngIf="formHasError">Form has some errors: {{ formHasError }}</div>
 
 <br><br>
 
